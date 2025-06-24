@@ -3,11 +3,16 @@ import java.util.HashSet;
 public class Ciudad {
 
     private HashSet<Consumidor> consumidores = new HashSet<>();
-    private HashSet<Centrales> centrales = new HashSet<>();
-    private HashSet<Centrales> contaminantes = new HashSet<>();
+
+    private HashSet<Central> centrales = new HashSet<>();
+    private HashSet<Central> contaminantes = new HashSet<>(); // no hacerlo como atributo sino como return
     private HashSet<Propietario> propietarios = new HashSet<>();
     private int consumoTotal;
     private int produccionTotal;
+
+    public HashSet<Central> getCentrales() {
+        return centrales;
+    }
 
     public int getConsumoTotal() {
         return consumoTotal;
@@ -22,12 +27,12 @@ public class Ciudad {
 
     }
 
-    public void agregarCentral(Centrales unaCentral) {
+    public void agregarCentral(Central unaCentral) {
         this.centrales.add(unaCentral);
     }
 
     public void setContaminantes() {
-        for(Centrales unaCentral: centrales) {
+        for(Central unaCentral: centrales) {
             if (unaCentral.nivelEmision>=70) {
                 this.contaminantes.add(unaCentral);
             }
@@ -35,13 +40,13 @@ public class Ciudad {
 
     }
 
-    public HashSet<Centrales> getContaminantes() {
+    public HashSet<Central> getContaminantes() {
         return contaminantes;
     }
 
     public int emisionTotal() {
         int suma = 0;
-        for(Centrales unaCentral: centrales) {
+        for(Central unaCentral: centrales) {
             suma+= unaCentral.nivelEmision;
 
         }
@@ -59,7 +64,7 @@ public class Ciudad {
     }
 
     public void setPropietarios() {
-        for(Centrales unaCentral: centrales) {
+        for(Central unaCentral: centrales) {
             propietarios.add(unaCentral.getPropietario());
 
         }
@@ -71,7 +76,7 @@ public class Ciudad {
 
     public void setProduccionTotal() {
         int suma = 0;
-        for (Centrales unaCentral: centrales) {
+        for (Central unaCentral: centrales) {
             suma += unaCentral.getCantEnergia();
         }
     }
@@ -83,6 +88,7 @@ public class Ciudad {
 
     public boolean sosPeligrosa() {
 
+        return this.centrales.stream().anyMatch(central -> central.cantEnergia >= central.capacidadMaxima);
 
     }
 

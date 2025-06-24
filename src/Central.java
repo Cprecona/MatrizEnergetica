@@ -1,13 +1,14 @@
-public abstract class Centrales {
+public abstract class Central {
 
 
     protected int cantEnergia;
-    protected int capacidadMaxima;
+    public int capacidadMaxima;
     protected int nivelEmision;
     protected Propietario propietario;
 
-    public Centrales(Propietario propietario) {
+    public Central(Propietario propietario, int capacidadMaxima) {
         this.propietario = propietario;
+        this.capacidadMaxima = capacidadMaxima;
     }
 
     public int getCantEnergia() {

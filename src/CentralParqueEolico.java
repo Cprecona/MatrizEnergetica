@@ -1,11 +1,11 @@
-public class CentralParqueEolico extends Centrales{
+public class CentralParqueEolico extends Central {
 
     private int cantGeneradores;
     private int aporteGenerador = 13;
     private int nivelEmision = 0;
 
-    public CentralParqueEolico(Propietario propietario) {
-        super(propietario);
+    public CentralParqueEolico(Propietario propietario, int capacidadMaxima) {
+        super(propietario, capacidadMaxima);
     }
 
     @Override

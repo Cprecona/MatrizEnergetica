@@ -2,14 +2,31 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Creo la ciudad
+        Ciudad springfield = new Ciudad();
+
+        // Creo una central nuclear en springfield con sus reactores y propietario.
+        Propietario Burns = new Propietario("20000001435","Burns");
+        CentralNuclear nuclear = new CentralNuclear(Burns, 150,250);
+        nuclear.agregarReactores(92);
+        springfield.agregarCentral(nuclear);
+
+        // Agrego consumidores
+
+        Consumidor pepe = new Consumidor("Pepe", 400);
+        Consumidor tito = new Consumidor("Tito", 300);
+        // AGREGAR MÉTODO PARA QUE SUME A LOS CONSUMIDORES
+
+        // Aplico los métodos
+
+        System.out.println(springfield.getConsumoTotal());
+        springfield.getCentrales();
+        System.out.println(springfield.sosEficiente());
+        springfield.getPropietarios();
+        System.out.println(springfield.sosSustentable());
+        System.out.println(springfield.sosPeligrosa());
+
+
     }
 }

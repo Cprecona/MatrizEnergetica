@@ -1,24 +1,20 @@
 public class Propietario {
 
-    private int CUIT;
+    private String CUIT;
     private String nombre;
+
+    public Propietario(String CUIT, String nombre) {
+        this.CUIT = CUIT;
+        this.nombre = nombre;
+    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCUIT() {
+    public String getCUIT() {
         return CUIT;
     }
-
-    public void setCUIT(int CUIT) {
-        this.CUIT = CUIT;
-    }
-
 
 
 }

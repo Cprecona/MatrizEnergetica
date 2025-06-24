@@ -1,27 +1,11 @@
 import java.util.ArrayList;
 
-public class CentralNuclear extends Centrales{
+public class CentralNuclear extends Central {
 
-    public CentralNuclear(Propietario propietario, int potencia) {
-        super(propietario);
-        agregarReactores(potencia);
+    public CentralNuclear(Propietario propietario, int potenciaReactor1, int capacidadMaxima) {
+        super(propietario, capacidadMaxima);
+        agregarReactores(potenciaReactor1);
     }
-
-    private class Reactor {
-
-        int potenciaReactor;
-
-        public int getPotenciaReactor() {
-            return potenciaReactor;
-        }
-
-        public void setPotenciaReactor(int potenciaReactor) {
-            this.potenciaReactor = potenciaReactor;
-        }
-
-    }
-
-
 
     private ArrayList<Reactor> reactores = new ArrayList<>();
 
@@ -42,12 +26,11 @@ public class CentralNuclear extends Centrales{
     }
 
     public void agregarReactores(int potencia) {
-        if (this.getCantReactores()<5) {
+        if (this.getCantReactores()+ 1 <5) {
             Reactor nuevo = new Reactor();
             nuevo.setPotenciaReactor(potencia);
             this.reactores.add(nuevo);
-        }
-        System.out.println("No es posible agregar más reactores");
+        } else {System.out.println("No es posible agregar más reactores");};
     }
 
 
